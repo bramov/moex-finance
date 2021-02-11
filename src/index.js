@@ -1,17 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+import MainPage from './pages/main';
+import Ticket from './pages/ticket';
+import SharesPage from "./pages/sharesPage";
+import BondsPage from "./pages/bondsPage";
+import IndexPage from "./pages/indexPage";
+
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect,
+  withRouter
+} from "react-router-dom"
+import {createBrowserHistory} from 'history'
+
+
+const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter history={history}>
+      <Switch>
+        <Route exact path="/" component={MainPage}/>
+        <Route exact path="/shares/" component={SharesPage}/>
+        <Route exact path="/bonds/" component={BondsPage}/>
+        <Route exact path="/index/" component={IndexPage}/>
+        <Route path="/shares/:ticket" component={Ticket}/>
+        {/* то что ниже - надо исправить */}
+        <Route path="/bonds/:ticket" component={Ticket}/>
+        <Route path="/index/:ticket" component={Ticket}/>
+      </Switch>
+    </BrowserRouter>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
