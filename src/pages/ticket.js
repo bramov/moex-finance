@@ -22,7 +22,7 @@ function Ticket(props) {
     ((todayDate.getDay() < 10) ? '0' + todayDate.getDay() : todayDate.getDay());
 
   useEffect(() => {
-    fetch(`http://iss.moex.com/iss/engines/stock/markets/${market}/securities/${ticketName}/candles.json?interval=24&from=${date}`)
+    fetch(`https://iss.moex.com/iss/engines/stock/markets/${market}/securities/${ticketName}/candles.json?interval=24&from=${date}`)
       .then(res => res.json())
       .then(
         (result) => {

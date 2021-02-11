@@ -10,7 +10,7 @@ function RenderedItems(props) {
   const [items, setItems] = useState([]);
   const market = props.market;
   useEffect(() => {
-    fetch(`http://iss.moex.com/iss/engines/stock/markets/${market}/securities.json`)
+    fetch(`https://iss.moex.com/iss/engines/stock/markets/${market}/securities.json`)
       .then(res => res.json())
       .then(
         (result) => {
