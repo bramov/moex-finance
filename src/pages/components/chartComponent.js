@@ -14,7 +14,7 @@ function ChartComponent(props) {
     arrForLow.push(props.items[i][3]);
     arrForHigh.push(props.items[i][2]);
     dataFirst.push({
-      x: new Date(props.items[i][6]),
+      x: new Date(props.items[i][6].replace(/-/g, '/')),
       y: [props.items[i][0], props.items[i][2], props.items[i][3], props.items[i][1]]
     })
 
@@ -23,12 +23,13 @@ function ChartComponent(props) {
       acc += Number(props.items[j][1]);
     }
     dataSecond.push({
-      x: new Date(props.items[i][6]),
+      x: new Date(props.items[i][6].replace(/-/g, '/')),
       y: acc/50
     })
   }
   const lowestValue = Math.min(...arrForLow);
   const highestValue = Math.max(...arrForHigh);
+  console.log(dataFirst);
 
   const data = {
     series: [{
